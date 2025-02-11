@@ -7999,9 +7999,11 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "Microsoft.EntityFrameworkCore >= 9.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.1",
       "Microsoft.EntityFrameworkCore.SQLite >= 9.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.1",
+      "Microsoft.EntityFrameworkCore.Sqlite.core >= 9.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 9.0.0"
     ]
@@ -8057,6 +8059,10 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[9.0.1, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -8068,6 +8074,10 @@
             "version": "[9.0.1, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[9.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Sqlite.core": {
             "target": "Package",
             "version": "[9.0.1, )"
           },
