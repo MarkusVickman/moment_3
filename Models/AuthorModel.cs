@@ -3,11 +3,15 @@ using Book.Models;
 
 namespace Author.Models;
 
-public class AuthorModel {
+public class AuthorModel
+{
     // Properties
-    public int Id { get; set; }    
-    public string? FirstName { get; set; }
-    public string?  LastName { get; set; }
+    [Display(Name = "Författare")]
+    public int Id { get; set; }
+
+    [Required]
+    [Display(Name = "Namn")]
+    public string? Name { get; set; }
 
     public List<BookModel>? Book { get; set; }
 }

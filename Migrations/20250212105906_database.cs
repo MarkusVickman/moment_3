@@ -17,8 +17,7 @@ namespace moment_3.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true)
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,9 +30,8 @@ namespace moment_3.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    Email = table.Column<string>(type: "TEXT", nullable: true)
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "Email", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,8 +44,8 @@ namespace moment_3.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ISBN = table.Column<string>(type: "TEXT", nullable: true),
-                    BookName = table.Column<string>(type: "TEXT", nullable: true),
+                    ISBN = table.Column<string>(type: "TEXT", nullable: false),
+                    BookName = table.Column<string>(type: "TEXT", nullable: false),
                     Amount = table.Column<int>(type: "INTEGER", nullable: true),
                     AuthorId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -67,9 +65,9 @@ namespace moment_3.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    BookId = table.Column<int>(type: "INTEGER", nullable: true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    BookId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,12 +76,14 @@ namespace moment_3.Migrations
                         name: "FK_Loan_Book_BookId",
                         column: x => x.BookId,
                         principalTable: "Book",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Loan_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

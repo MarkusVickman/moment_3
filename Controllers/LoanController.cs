@@ -49,8 +49,8 @@ namespace moment_3.Controllers
         // GET: Loan/Create
         public IActionResult Create()
         {
-            ViewData["BookId"] = new SelectList(_context.Book, "ID", "ID");
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id");
+            ViewData["BookId"] = new SelectList(_context.Book, "ID", "BookName");
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Email");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace moment_3.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookId"] = new SelectList(_context.Book, "ID", "ID", loanModel.BookId);
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", loanModel.UserId);
+            ViewData["BookId"] = new SelectList(_context.Book, "ID", "BookName", loanModel.BookId);
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Email", loanModel.UserId);
             return View(loanModel);
         }
 
@@ -85,8 +85,8 @@ namespace moment_3.Controllers
             {
                 return NotFound();
             }
-            ViewData["BookId"] = new SelectList(_context.Book, "ID", "ID", loanModel.BookId);
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", loanModel.UserId);
+            ViewData["BookId"] = new SelectList(_context.Book, "ID", "BookName", loanModel.BookId);
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Email", loanModel.UserId);
             return View(loanModel);
         }
 
@@ -122,8 +122,8 @@ namespace moment_3.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookId"] = new SelectList(_context.Book, "ID", "ID", loanModel.BookId);
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", loanModel.UserId);
+            ViewData["BookId"] = new SelectList(_context.Book, "ID", "BookName", loanModel.BookId);
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Email", loanModel.UserId);
             return View(loanModel);
         }
 
