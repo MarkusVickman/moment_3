@@ -9,7 +9,10 @@
 <p>
     <a asp-action="Create">Låna ut</a>
 </p>
-<table class="table">
+<br>
+<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Sök...">
+<br>
+<table class="table" id="table">
     <thead>
         <tr>
             <th>
