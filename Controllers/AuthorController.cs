@@ -145,7 +145,25 @@ namespace moment_3.Controllers
                 _context.Author.Remove(authorModel);
             }
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Kontrollera om undantaget är relaterat till en FK-relation
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("FOREIGN KEY"))
+                {
+                    ModelState.AddModelError("", "Författaren kan inte tas bort eftersom den används i en annan tabell.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Ett oväntat fel uppstod. Författaren kunde inte tas bort.");
+                }
+
+                return View(authorModel);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
