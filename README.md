@@ -2,6 +2,7 @@
 ## Moment 3, dt191g - Webbutveckling med .NET
 
 Webbplatsen heter "Lend a book" och där går det att låna böcker. Sidan är tänk för att användas av personal på exempelvis ett litet bibliotek. Webbplatsen innehåller 4 tabeller(modeller) med data för användare, boklån, böcker och författare. Routes, crud samt tabeller och formulär skapades automatiskt utifrån modellerna till databasen. Ändringar har gjort för att lägga till sök för alla tabeller. Routes är ändrade för boklån så att de även ändrar värde för hur många böcker som finns i lager.
+Det är även ändrat i specifikationerna för vilka typer inmatningar ska vara samt visningsnamn.
 
 Uppgiften uppfyller grundkraven samt krav för överbetyg. 
 
