@@ -3,6 +3,7 @@ using Book.Models;
 
 namespace Author.Models;
 
+//Modell över författare, Relation till BookModel
 public class AuthorModel
 {
     // Properties

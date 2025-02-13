@@ -6,6 +6,7 @@ using User.Models;
 
 namespace Book.Data;
 
+//inställningar för DbContext, inkluderar databastabeller.
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }

@@ -4,6 +4,7 @@ using Book.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Ansluter till mysqli-databas enligt inställningarna
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultDbConnection"))
 );

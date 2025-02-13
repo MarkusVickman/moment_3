@@ -18,6 +18,7 @@ public class HomeController : Controller
         return View();
     }
 
+    //Ändrat så att privacy blev en about route istället
     public IActionResult About()
     {
         return View();

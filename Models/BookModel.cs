@@ -4,6 +4,8 @@ using Loan.Models;
 
 namespace Book.Models;
 
+//Modell över böcker, Relation till författare där författar id är FK i denna tabell
+//Har även en relation till boklån
 public class BookModel
 {
     // Properties

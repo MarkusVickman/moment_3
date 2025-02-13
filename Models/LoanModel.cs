@@ -6,6 +6,7 @@ using Book.Models;
 
 namespace Loan.Models;
 
+//Modell över boklån, Relation till böcker och användare där bok id och användar id är FK i denna tabell
 public class LoanModel
 {
     // Properties
