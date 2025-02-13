@@ -63,6 +63,25 @@ namespace moment_3.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                // Hämta den bok som ska lånas
+                var book = await _context.Book.FindAsync(loanModel.BookId);
+                if (book != null && book.Amount > 0)
+                {
+                    // Uppdatera antalet böcker i lager
+                    book.Amount -= 1;
+                }
+                else
+                {
+                    // Om boken är slut återgår vi till vyn med ett meddelande
+                    ModelState.AddModelError("", "Boken är slut eller kunde inte hittas.");
+                    ViewData["BookId"] = new SelectList(_context.Book, "ID", "BookName", loanModel.BookId);
+                    ViewData["UserId"] = new SelectList(_context.User, "Id", "Email", loanModel.UserId);
+                    return View(loanModel);
+                }
+
+
+
                 _context.Add(loanModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -155,6 +174,24 @@ namespace moment_3.Controllers
             var loanModel = await _context.Loan.FindAsync(id);
             if (loanModel != null)
             {
+
+                // Hämta den bok som ska lämnas tillbaka
+                var book = await _context.Book.FindAsync(loanModel.BookId);
+                if (book != null)
+                {
+                    // Uppdatera antalet böcker i lager
+                    book.Amount += 1;
+                    _context.Update(loanModel);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    // Om boken är slut återgår vi till vyn med ett meddelande
+                    ModelState.AddModelError("", "Boken gick inte att ta bort. Vänligen kontakta systemadministratören.");
+                    return RedirectToAction(nameof(Index));
+                }
+
+
                 _context.Loan.Remove(loanModel);
             }
 

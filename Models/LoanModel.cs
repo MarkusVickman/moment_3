@@ -16,17 +16,17 @@ public class LoanModel
     [Column(TypeName = "Date")]
     public DateTime CreatedDate { get; set; }
 
+    [Required]
     [Display(Name = "Bok")]
     public int? BookId { get; set; }
 
-    [Required]
     [Display(Name = "Bok")]
     public BookModel? Book { get; set; }
 
+    [Required]
     [Display(Name = "Användare")]
     public int? UserId { get; set; }
 
-    [Required]
     [Display(Name = "Användare")]
     public UserModel? User { get; set; }
 
